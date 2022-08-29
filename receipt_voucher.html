@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Receipt Voucher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>    
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container" id="receipt">
+    <!-- begin receipt-company -->
+    <div class="row print-pdf">
+        <div class="col-12 mt-2 mb-5 text-right">
+            <span class="hidden-print">
+                <a id="printPageButton" href="javascript:;"  onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a>
+                <a id="exportPDFButton" href="javascript:;"  onclick="exportPDF();"  class="btn btn-sm btn-white m-b-10 p-l-5 margin-bottom-10"><i class="fa fa-file t-plus-1 fa-fw fa-lg"></i> Export as PDF</a>
+            </span>
+        </div>
+    </div>
+    <!-- end receipt-company -->
+    <div class="receipt-page">
+        <div>
+            <img class="watermark" src="brq-watermark.png">
+        </div>
+        <div class="receipt">
+            <div class="row receipt-header">
+                <div class="col-md-4 col-4">
+                    <img class="img-fluid" src="logo.png">
+                    <div class="logo-text">www.brqinvestments.com</div>
+                </div>
+                <div class="col-md-4 col-4">
+                    <div class="column-3">
+                        An ISO 9001-2015 Certified Company, <br> A Startup Recognized By Govt of India Reg No: {{BRQStartUpRegNo}} <!--}DIPP32663-->
+                    </div>
+                </div>
+                <div class="col-md-4 col-4">
+                    <div class="gstno-head"> GST No : </div>
+                    <div class="gstno-content">{{BRQGSTNo}}</div> <!-- 32AAICB2616A1ZG -->
+                </div>
+                <div class="col-lg-12 receipt-title">
+                    <h6>RECEIPT VOUCHER</h6>
+                </div>
+            </div>
+            <div class="row receipt-body">
+                <div class="col-md-6 col-6 border-bottom">
+                    <div class="receipt-no-date">Receipt Voucher No : BRQ-LMP-2022-23-001</div>
+                </div>
+                <div class="col-md-6 col-6 border-bottom">
+                    <div class="receipt-no-date">Receipt Voucher Date : 01-07-2021</div>
+                </div>
+                <div class="col-lg-12 border-bottom pb-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="address-header">Received From</div> 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="address-content"><strong>Name</strong><strong>:</strong>{{CustomerName}}</div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="address-content"><strong>Address</strong><strong>:</strong>{{CustomerAddress}}</div> 
+                        </div>
+                        <div class="col-md-6 col-6">
+                            <div class="address-content"><strong>Pin Code</strong><strong>:</strong>{{CustomerPincode}</div>
+                        </div>
+                        <div class="col-md-6 col-6">
+                            <div class="address-content pincode"><strong>Mob No</strong><strong>:</strong>{{CustomerMobno}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 table-receipt">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sl NO</th>
+                                    <th class="text-center">PARTICULARS/INVESTMENTS</th>
+                                    <th class="text-center">INVESTMENT TYPE</th>
+                                    <th class="text-center">AMOUNT<span>(<i class="fas fa-rupee-sign"></i>)</span></th>
+                                </tr>
+                            </thead>
+            
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        <div>1</div>
+                                    </th>
+                                    <td> 
+                                        <div>Share Holder</div>   
+                                    <td>
+                                       <div>Investment</div> 
+                                    </td>
+                                    <td>
+                                        <div>1,00.000</div>
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        
+                            <tfoot>
+                                <tr>
+                                    <th class="text-left" colspan="2">Total Amount in Words : <span class="fw-600"> {{AmountInWords}} </span></th>
+                                    <th style="font-size: 15px;">GRAND TOTAL </th>
+                                    <th style="font-size: 15px;"> <i class="fas fa-rupee-sign pr-1"></i>{{GrandTotal}}</th>
+                                </tr>
+                                
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row receipt-body receipt-body-2">
+                <div class="col-md-6 col-6 terms-condition">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td rowspan="7" colspan="3">
+                                    <img class="img-fluid" src="BRQ-LOGO.png">
+                                </td>
+                                <td><i class="fa fa-globe" style="color: #044b79;"></i> {{BRQUrl}}</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fa fa-envelope" style="color: #D44638;"></i>{{SalesEmail}}</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-phone-volume" style="color: #229ed1;"></i> {{BRQPhoneNo}}</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fab fa-whatsapp" style="color: #075E54;"></i>{{BRQWhatsApp}}</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fab fa-twitter" style="color: #00acee;"></i>{{BRQTwitter}}</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fab fa-instagram" style="color: #e95950;"></i>{{BRQInstagram}}</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-blender-phone" style="color: #044b79;"></i> {{BRQTelephones}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6 col-6 seal">
+                    <img src="SEAL-GLOB-TECH.png" style="width:100%;">
+                    <div class="seal-text">Computer Generated receipt with due Seal & Signature</div>
+                    
+                </div>
+                <div class="e-and-oe">*E&OE</div>
+            </div>
+            <div class="row receipt-footer">
+                
+                <div class="col-md-12">
+                    <div>{{BRQAddress}}</div>
+                </div>
+            </div>
+            <p><em style='float:right; font-size:10px;font-weight:bold;'>* This is a computer generated receipt. Dt. {{GeneratedDateTime}}.</em></p>
+        </div>
+    </div> 
+</div>
+<input id="hidBaseUrl" type='hidden' value='{{URL}}' />
+
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+ <!-- for PDF exporting --->
+ <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+<script type="text/javascript" src="./js-pdf/dist/html2pdf.bundle.js"></script>
+
+
+<script type="text/javascript">
+	
+	// converting but no image and page margin not correct
+/*
+	$("body").on("click", "#exportPDFButton", function () {
+            html2canvas($('#receipt')[0], {
+                onrendered: function (canvas) {
+                    var data = canvas.toDataURL();
+                    var docDefinition = {
+                        content: [{
+                            image: data,
+                            width: 500
+                        }]
+                    };
+                    pdfMake.createPdf(docDefinition).download("receipt.pdf");
+                }
+            });
+        });
+		
+
+
+$("body").on("click", "#exportPDFButton", function () {
+
+	var element = document.getElementById('receipt');
+		
+		alert("exportPDFButton clicked");
+        // Generate the PDF.
+    
+		html2pdf().from(element).set({
+          margin: 1,
+          filename: 'receipt.pdf',
+          html2canvas: { scale: 2 },
+          jsPDF: {orientation: 'portrait', unit: 'in', format: 'letter', compressPDF: true}
+        }).save();
+		
+
+});
+*/
+function exportPDF()
+{
+		var element = document.getElementById('receipt');
+		
+		var element = document.getElementById('receipt');
+		var url = document.getElementById('hidBaseUrl').value;
+			url+="generatereceiptPdf";
+		
+		
+		window.open(url);
+		
+		/*
+		html2pdf().from(element).set({
+          margin: 1,
+          filename: 'receipt.pdf',
+          html2canvas: { scale: 2 },
+          jsPDF: {orientation: 'portrait', unit: 'in', format: 'letter', compressPDF: true}
+        }).save();
+	*/
+}
+</script>
+</body>
+</html>
